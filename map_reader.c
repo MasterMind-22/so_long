@@ -27,16 +27,14 @@ char **read_map(char *av)
     int fd = open(av, O_RDONLY);
     map = (char **)malloc(map_height(av) * sizeof(sizeof(char *)));
     if (!map)
-        return(free(map), NULL);
+        ft_putstr("Error\nUNABLE TO ALLOCATE MEMORY");
     char *read_line = get_next_line(fd);
     while (read_line != NULL)
     {
         map[i] = read_line;
         i++;
         read_line = get_next_line(fd);
-        free(read_line);
     }
     map[i] = NULL;
-    //free(read_line);
     return(map);
 }

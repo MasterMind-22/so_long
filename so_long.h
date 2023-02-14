@@ -24,6 +24,8 @@ typedef struct too_long{
 	char **map_copy;
 	int map_height;
 	int map_width;
+	size_t x_player;
+	size_t y_player;
 
 } so_long;
 

@@ -1,5 +1,5 @@
 #include "so_long.h"
-void check_leaks();
+
 int	main(int ac, char **av)
 {
 	char **a = read_map(av[1]);
