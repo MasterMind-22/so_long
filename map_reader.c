@@ -1,53 +1,64 @@
 #include "so_long.h"
 
-void map_height(so_long *s_long, char *av)
+int map_height(char *av)
+{
+    int fd;
+    char *line;
+    int map_height;
+
+    fd = open(av, O_RDONLY);
+    line = get_next_line(fd);
+    map_height = 0;
+    while (line)
+    {
+        map_height++;
+        line = get_next_line(fd);
+    }
+    free(line);
+    return(map_height);
+}
+int map_width(char *av)
 {
     int fd;
     char *line;
 
     fd = open(av, O_RDONLY);
     line = get_next_line(fd);
-    s_long->map_height = 0;
-    s_long->map_width = strlen(line);
-    while (line)
-    {
-        s_long->map_height++;
-        line = get_next_line(fd);
-    }
-    free(line);
+    return(ft_strlen(line));
 }
 
-void    read_map(so_long *s_long, char *av)
+char **read_map(char *av)
 {
     int fd;
     char *read_line;
     int i = 0;
+    char **map;
 
-    map_height(s_long, av);
     fd = open(av, O_RDONLY);
+    map = malloc (map_height(av) * sizeof(char *));
     read_line = get_next_line(fd);
-    s_long->map = malloc (s_long->map_height * sizeof(char *));
-    s_long->map_copy = malloc (s_long->map_height * sizeof(char *));
     while (read_line)
     {
-        s_long->map[i] = read_line;
-        s_long->map_copy[i] = read_line;
+        map[i] = read_line;
         read_line = get_next_line(fd);
         i++;
     }
+    return(map);
 }
 
 int main(int ac, char **av)
 {
     (void)ac;
-    so_long *s_long;
-    s_long = malloc(sizeof(so_long));
-    map_height(s_long, av[1]);
-    read_map(s_long, av[1]);
-    for (size_t i = 0; i < s_long->map_height; i++)
-        printf("%s", s_long->map[i]);
-    
-   // check_map(s_long, av[1]);
-    
-    
+    on_screen *fill;
+    char **map;
+    map = read_map(av[1]);
+    void *mlx = mlx_init();
+    int x = map_height(av[1]);
+    int y = map_width(av[1]);
+
+    void *window = mlx_new_window(mlx, x*=60, y*=60, "WINDOW");
+    for (int i = 0; i < x; i++)
+        for (int j = 0; j < y; j++)
+        print_on_screen(fill, mlx, window, map[i][j]);
+    mlx_loop(mlx);
 }

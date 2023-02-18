@@ -38,12 +38,3 @@ void print_on_screen(on_screen *fill, void *mlx, void *window, char c)
     if (c == 'C')
         mlx_put_image_to_window(mlx, window, fill->collectible_img, x*60, y*60);
 }
-
-int main(int ac, char **av)
-{
-    so_long *s_long;
-    s_long = malloc(sizeof(so_long));
-    read_map(s_long, av[1]);
-    for (int i = 0; i < s_long->map_height; i++)
-        printf("%s", s_long->map[i]);
-}

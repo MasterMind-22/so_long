@@ -29,9 +29,9 @@ typedef struct too_long{
 
 } so_long;
 
-
+int map_width(char *av);
 int map_height(char *av);
-void    read_map(so_long *s_long, char *av);
+char **read_map(char *av);
 void ft_putstr(char *str);
 int backtrack(char **map,int i, int j);
 void check_map(char **map, char *av);
@@ -39,5 +39,7 @@ int extension_check(char *av);
 int walls_check(char **map, char *av);
 int check_elements(char **map, char c);
 int check_strange(char **map, char *av);
+void xpm_to_img(on_screen *fill, void *mlx);
+void print_on_screen(on_screen *fill, void *mlx, void *window, char c);
 
 #endif
