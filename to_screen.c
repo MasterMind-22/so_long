@@ -1,33 +1,20 @@
 #include "so_long.h"
 
+
 int main(int ac, char **av)
 {
-    char a[3][4] = {"saoa",
-                    "axax",
-                    "axax",
-                    };
-    void	*mlx;
-	void	*window;
-	void	*img;
-    int i = 0;
-    int j = 0;
+    char *map = "111111111111111111111111111111110";
+    int x, y;
+    void *mlx = mlx_init();
+    void *window = mlx_new_window(mlx, 60*15, 60*6, "hello");
+    void *img_6 = mlx_xpm_file_to_image(mlx, "./pics/floor_4.xpm", &x, &y);
+    void *img_7 = mlx_xpm_file_to_image(mlx, "./pics/wall.xpm", &x, &y);
+    int i =0; int j=0;
+    while(map[i++]){
 
-	int x, y ;
-    int c = 0;
-    int k = 0;
-	mlx = mlx_init();
-	window = mlx_new_window(mlx, 1080, 720, "hello");
-    while (a[i])
-    {
-        while (a[i][j])
-    {
-	    img = mlx_xpm_file_to_image(mlx,"/home/kali/Downloads/PNG_transparency_demonstration_1.xpm", &x,&y);
-	    mlx_put_image_to_window(mlx, window, img, c, k);
-        c+=64;
-        k+=64;
-        j++;
-    }
-        i++;
-    }
-	mlx_loop(mlx);
+            mlx_put_image_to_window(mlx, window, img_7, i*60, j*60);
+            mlx_put_image_to_window(mlx, window, img_6, i*60, j*60);
+        }
+    mlx_loop(mlx);
+    mlx_destroy_window(mlx, window);
 }

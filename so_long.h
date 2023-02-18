@@ -3,7 +3,7 @@
 
 #define BUFFER_SIZE 10
 
-#include "./mlx_linux/mlx.h"
+#include "./minilibx-linux/mlx.h"
 #include<stdio.h>
 #include<unistd.h>
 #include<string.h>
@@ -11,13 +11,13 @@
 #include<fcntl.h>
 #include "./get_next_line/get_next_line.h"
 
-// typedef struct resources{
-// 	char *player_img = "";
-// 	char *wall_img =  "";
-// 	char *bg_img =  "";
-// 	char *collectible_img =  "";
-// 	char *enemy_img =  "";
-// };
+typedef struct screen_img{
+	char *player_img;
+	char *wall_img;
+	char *bg_img;
+	char *collectible_img;
+	char *enemy_img;
+} on_screen;
 
 typedef struct too_long{
 	char **map;
@@ -38,4 +38,8 @@ int check_elements(char **map, char c);
 int check_strange(char **map, char *av);
 void ft_putstr(char *str);
 void check_map(char **map, char *av);
+int backtrack(char **map,int i, int j);
+
+
+
 #endif
