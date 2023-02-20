@@ -3,6 +3,7 @@ SRCS =	map_reader.c \
 		map_check_tools.c \
 		other_functions.c \
 		check_all.c \
+		backtracking.c \
 
 OBJS = $(SRCS:.c=.o) \
 		./get_next_line/get_next_line.o \
