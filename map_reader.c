@@ -23,16 +23,18 @@ size_t map_width(char *av)
 void    read_map(so_long *s_long, char *av)
 {
     int i = 0;
-    //s_long->map_height = map_height(av);
-    //s_long->map_width = map_width(av);
+    s_long->map_height = map_height(av);
+    s_long->map_width = map_width(av);
     int fd = open(av, O_RDONLY);
     s_long->map = (char **)malloc(map_height(av) * sizeof(sizeof(char *)));
+    s_long->backtracking_map = (char **)malloc(map_height(av) * sizeof(sizeof(char *)));
     if (!s_long->map)
         ft_putstr("Error\nUNABLE TO ALLOCATE MEMORY");
     char *read_line = get_next_line(fd);
     while (read_line != NULL)
     {
         s_long->map[i] = read_line;
+        s_long->backtracking_map[i] = read_line;
         i++;
         read_line = get_next_line(fd);
     }

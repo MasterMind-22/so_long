@@ -21,7 +21,7 @@ typedef struct screen_img{
 
 typedef struct too_long{
 	char **map;
-	//char **backtracking_map;
+	char **backtracking_map;
 	int map_height;
 	int map_width;
 	size_t x_player;
