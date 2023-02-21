@@ -3,7 +3,7 @@
 
 #define BUFFER_SIZE 10
 
-#include "./mlx_linux/mlx.h"
+#include <mlx.h>
 #include<stdio.h>
 #include<unistd.h>
 #include<string.h>
@@ -29,17 +29,19 @@ typedef struct too_long{
 
 } so_long;
 
-size_t map_height(char *av);
-size_t map_width(char *av);
+int map_height(char *av);
+int map_width(char *av);
 void    read_map(so_long *s_long, char *av);
+void    read_map1(so_long *s_long, char *av);
 int extension_check(char *av);
 int walls_check(char **map, char *av);
-int check_elements(char **map, char c);
+int check_elements(char **map, char c, char *av);
 int check_strange(char **map, char *av);
 void ft_putstr(char *str);
 void check_map(so_long *s_long, char *av);
 int backtrack(char **map,int i, int j);
 void fillx(so_long *s_long);
-void map_copy(char **s1, char **s2);
+void xpm_to_img(on_screen *fill, void *mlx);
+void print_on_screen(on_screen *fill, void *mlx, void *window, char c, int x, int y);
 
 #endif

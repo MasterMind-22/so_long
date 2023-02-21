@@ -27,8 +27,8 @@ int extension_check(char *av)
 
 int walls_check(char **map, char *av)
 {
-    size_t i;
-    size_t j;
+    int i;
+    int j;
     int result;
 
     i=0;
@@ -51,12 +51,12 @@ int walls_check(char **map, char *av)
     return (result);
 }
 
-int check_elements(char **map, char c)
+int check_elements(char **map, char c, char *av)
 {
-    int i =0;
+    int i = 0;
     int count = 0;
 
-    while (map[i])
+    while (i < map_height(av))
     {
         count += count_char_int_line(map[i], c);
         i++;
@@ -67,12 +67,12 @@ int check_elements(char **map, char c)
 int check_strange(char **map, char *av)
 {
     int i = 0;
-    size_t count = 0;
+    int count = 0;
 
     char elements[5] = "01ECP";
     while (elements[i])
     {
-        count += check_elements(map, elements[i]) + 1;
+        count += check_elements(map, elements[i], av) + 1;
         i++;
     }
     if (count == map_height(av) * map_width(av))

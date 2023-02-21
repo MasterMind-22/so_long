@@ -4,6 +4,7 @@ SRCS =	map_reader.c \
 		other_functions.c \
 		check_all.c \
 		backtracking.c \
+		fill_structs.c \
 
 OBJS = $(SRCS:.c=.o) \
 		./get_next_line/get_next_line.o \
