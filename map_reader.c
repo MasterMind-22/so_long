@@ -3,21 +3,33 @@
 int map_height(char *av)
 {
     int map_height;
+    char *line;
     int fd;
 
-    map_height = 0;
     fd = open(av, O_RDONLY);
-    while (get_next_line(fd))
+    map_height = 0;
+    line = get_next_line(fd);
+    while (line)
+    {
         map_height++;
+        free(line);
+        line = get_next_line(fd);
+    }
+    free (line);
     return (map_height);
 }
 
 int map_width(char *av)
 {
     int fd;
+    int len;
+    char *line;
 
     fd = open(av, O_RDONLY);
-    return (strlen(get_next_line(fd)));
+    line = get_next_line(fd);
+    len = ft_strlen(line);
+    free(line);
+    return (len);
 }
 
 void    read_map(so_long *s_long, char *av)

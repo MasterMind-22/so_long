@@ -16,7 +16,8 @@ typedef struct screen_img{
 	char *wall_img;
 	char *bg_img;
 	char *collectible_img;
-	char *enemy_img;
+	char *door_closed_img;
+	char *door_open_img;
 } on_screen;
 
 typedef struct too_long{
@@ -42,6 +43,6 @@ void check_map(so_long *s_long, char *av);
 int backtrack(char **map,int i, int j);
 void fillx(so_long *s_long);
 void xpm_to_img(on_screen *fill, void *mlx);
-void print_on_screen(on_screen *fill, void *mlx, void *window, char c, int x, int y);
+void img_to_window(on_screen *fill, void *mlx, void *window, char c, int x, int y);
 
 #endif
