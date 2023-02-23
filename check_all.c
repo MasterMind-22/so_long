@@ -33,7 +33,7 @@ void check_map(so_long *s_long, char *av)
         exit(0);
     }
 
-    if (backtrack(s_long->backtracking_map, s_long->x_player, s_long->y_player) != 1)
+    if (backtrack(s_long, s_long->x_player, s_long->y_player) != 1)
     {
         ft_putstr("Error\nNO VALID PATH TO EXIT!");
         exit(0);

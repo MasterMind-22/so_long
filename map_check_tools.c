@@ -69,13 +69,13 @@ int check_strange(char **map, char *av)
     int i = 0;
     int count = 0;
 
-    char elements[5] = "01ECP";
+    char *elements = "01ECP";
     while (elements[i])
     {
-        count += check_elements(map, elements[i], av) + 1;
+        count += check_elements(map, elements[i], av);
         i++;
     }
-    if (count == map_height(av) * map_width(av))
+    if (count == map_height(av) * (map_width(av)-1))
         return (1);
     return (0);
 }

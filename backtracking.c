@@ -13,20 +13,20 @@ void fillx(so_long *s_long)
 		}
 }
 
-int backtrack(char **map,int i, int j)
+int backtrack(so_long *s_long, int i, int j)
 {
-	if (map[i][j] == 'E')
+	if (s_long->backtracking_map[i][j] == 'E')
 		return 1;
-	if (map[i][j] == '1')
+	if (s_long->backtracking_map[i][j] == '1')
 		return 0;
-	map[i][j] = '1';
-	if (backtrack(map, i+1, j) == 1)
+	s_long->backtracking_map[i][j] = '1';
+	if (backtrack(s_long, i+1, j) == 1)
 		return 1;
-	if (backtrack(map, i-1, j) == 1)
+	if (backtrack(s_long, i-1, j) == 1)
 		return 1;
-	if (backtrack(map, i, j+1) == 1)
+	if (backtrack(s_long, i, j+1) == 1)
 		return 1;
-	if (backtrack(map, i, j-1) == 1)
+	if (backtrack(s_long, i, j-1) == 1)
 		return 1;
 	return 0;
 }

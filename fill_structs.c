@@ -43,13 +43,31 @@ void img_to_window(on_screen *fill, void *mlx, void *window, char c, int x, int 
         mlx_put_image_to_window(mlx, window, fill->collectible_img, x, y);
 }
 
-// void print_on_screen(char *line, void *mlx, void *win, on_screen *fill)
-// {
-//     int x;
-//     int y;
+void print_on_screen(so_long *s_long, on_screen *fill)
+{
+    int x;
+    int y;
 
-//     x = 0;
-//     y = 0;
-//     while ()
+    x = 0;
+    y = 0;
+    s_long->mlx = mlx_init();
+	s_long->win = mlx_new_window(s_long->mlx, 60*(s_long->map_width-1), 60*(s_long->map_height), "hello");
+	xpm_to_img(fill, s_long->mlx);
+	int i = 0;
+	int j = 0;
+	while (i < s_long->map_height)
+	{
+		j = 0;
+		x = 0;
+		while (j < s_long->map_width - 1)
+		{
+			img_to_window(fill, s_long->mlx, s_long->win, s_long->map[i][j], x, y);
+			j++;
+			x+=60;
+		}
+		i++;
+    	y+=60;
+	}
+    mlx_loop(s_long->mlx);
 
-// }
+}

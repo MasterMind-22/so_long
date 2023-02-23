@@ -25,8 +25,11 @@ typedef struct too_long{
 	char **backtracking_map;
 	int map_height;
 	int map_width;
-	size_t x_player;
-	size_t y_player;
+	int x_player;
+	int y_player;
+	int c_count;
+	void *mlx;
+	void *win;
 
 } so_long;
 
@@ -40,9 +43,10 @@ int check_elements(char **map, char c, char *av);
 int check_strange(char **map, char *av);
 void ft_putstr(char *str);
 void check_map(so_long *s_long, char *av);
-int backtrack(char **map,int i, int j);
+int backtrack(so_long *s_long, int i, int j);
 void fillx(so_long *s_long);
 void xpm_to_img(on_screen *fill, void *mlx);
 void img_to_window(on_screen *fill, void *mlx, void *window, char c, int x, int y);
+void print_on_screen(so_long *s_long, on_screen *fill);
 
 #endif
