@@ -17,14 +17,14 @@ void check_map(so_long *s_long, char *av)
         ft_putstr("Error\nTHE MAP MUST CONTAIN ONLY THE ELEMENTS \"ECP01\"!");
         exit(0);
     }
-    if (check_elements(s_long->map, 'E', av) != 1)
-    {
-        ft_putstr("Error\nTHE MAP MUST CONTAIN 1 EXIT!");
-        exit(0);
-    }
     if (check_elements(s_long->map, 'P', av) != 1)
     {
         ft_putstr("Error\nTHE MAP MUST CONTAIN 1 PLAYER!");
+        exit(0);
+    }
+    if (check_elements(s_long->map, 'E', av) != 1)
+    {
+        ft_putstr("Error\nTHE MAP MUST CONTAIN 1 EXIT!");
         exit(0);
     }
     if (check_elements(s_long->map, 'C', av) < 1)
