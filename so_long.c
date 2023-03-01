@@ -18,14 +18,13 @@ int	main(int ac, char **av)
 
 	s_long = malloc(sizeof(so_long));
 
-	printf("%d\n", getpid());
 	read_map(s_long, av[1]);
 	read_map1(s_long, av[1]);
 	check_map(s_long, av[1]);
 	s_long->mlx = mlx_init();
-	s_long->win = mlx_new_window(s_long->mlx, 60*(s_long->map_width-1), 60*(s_long->map_height), "hello");
+	s_long->win = mlx_new_window(s_long->mlx, 64*(s_long->map_width-1), 64*(s_long->map_height), "hello");
 	print_on_screen(s_long);
-	mlx_hook(s_long->win, 2, 1L<<0, get_keycode, &s_long);
+	//mlx_hook(s_long->win, 2, 1L<<0, get_keycode, &s_long);
 	mlx_loop(s_long->mlx);
 	return 0;
 }

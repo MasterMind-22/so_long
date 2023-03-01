@@ -7,8 +7,8 @@ void fillx(so_long *s_long)
 		{
 			if (s_long->map[i][j] == 'P')
 			{
-				s_long->x_player=i;
-				s_long->y_player=j;
+				s_long->x_player=j;
+				s_long->y_player=i;
 			}
 		}
 }

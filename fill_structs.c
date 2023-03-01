@@ -62,8 +62,8 @@ void print_on_screen(so_long *s_long)
 		while (++j < s_long->map_width - 1)
 		{
 			img_to_window(s_long, s_long->map[i][j], x, y);
-			x+=60;
+			x+=64;
 		}
-    	y+=60;
+    	y+=64;
 	}
 }

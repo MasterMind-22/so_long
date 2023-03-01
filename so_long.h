@@ -27,6 +27,8 @@ typedef struct too_long{
 	int map_width;
 	int x_player;
 	int y_player;
+	int x_win;
+	int y_win;
 	int c_count;
 	void *mlx;
 	void *win;
@@ -55,6 +57,6 @@ void xpm_to_img(so_long *s_long);
 void img_to_window(so_long *s_long, char c, int x, int y);
 void print_on_screen(so_long *s_long);
 int	key_hook(int keycode, so_long s_long);
-int get_keycode(int keycode, so_long s_long);
+int get_keycode(int keycode, so_long *so_long);
 
 #endif
