@@ -3,7 +3,7 @@
 
 #define BUFFER_SIZE 10
 
-#include "./mlx_linux/mlx.h"
+#include <mlx.h>
 #include<stdio.h>
 #include<unistd.h>
 #include<string.h>
@@ -24,22 +24,26 @@ typedef struct too_long{
 	char **backtracking_map;
 	int map_height;
 	int map_width;
+	int c_count;
+	int player_left_right;
+	int print_move;
+
+	// Player Position
 	int x_player;
 	int y_player;
-	int x_win;
-	int y_win;
-	int c_count;
-	void *mlx;
+
+	// Mlx Pointers
 	void *win;
-	char *player_right_img;
-	char *player_left_img;
+	void *mlx;
+
+	// Img Resources
 	char *wall_img;
 	char *bg_img;
+	char *player_left_img;
 	char *collectible_img;
 	char *door_closed_img;
+	char *player_right_img;
 	char *door_open_img;
-	int print_move;
-	int player_left_right;
 
 } so_long;
 
@@ -47,7 +51,7 @@ int		map_height(char *av);
 int		map_width(char *av);
 void    read_map(so_long *s_long, char *av);
 void    read_map1(so_long *s_long, char *av);
-int		extension_check(char *av);
+void	extension_check(char *av);
 int		walls_check(char **map, char *av);
 int		check_elements(char **map, char c, char *av);
 int		check_strange(char **map, char *av);
@@ -60,5 +64,6 @@ void	img_to_window(so_long *s_long, char c, int x, int y);
 int		get_keycode(int keycode, so_long *s_long);
 void	print_on_screen(so_long *s_long);
 int close_mark(int keycode, so_long s_long);
+int count_char_int_line(char *str, int c);
 
 #endif

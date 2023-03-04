@@ -21,7 +21,7 @@ int	main(int ac, char **av)
 		s_long->mlx = mlx_init();
 		s_long->win = mlx_new_window(s_long->mlx, 60*(s_long->map_width-1), 60*(s_long->map_height), "hello");
 		print_on_screen(s_long);
-		mlx_string_put(s_long->mlx, s_long->win, 0, 0, 0x78f000, "hello");
+		//mlx_string_put(s_long->mlx, s_long->win, 0, 0, 0x78f000, "hello");
 		mlx_hook(s_long->win, 2, 1L<<0, get_keycode, s_long);
 		mlx_hook(s_long->win, 17, 1L<<0, close_mark, s_long);
 		mlx_loop(s_long->mlx);

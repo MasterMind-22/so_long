@@ -17,12 +17,12 @@ OBJS = $(SRCS:.c=.o) \
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 RESOURCES = get_next_line.a
-DATE = $(shell date --iso=date)
+DATE = $(shell date)
 
 all :  $(NAME)
 
 %.o : %.c so_long.h
-	$(CC) $(CFLAGS) -c $<
+	$(CC) $(CFLAGS) -Imlx -c $<
 
 $(LIB) : $(OBJS)
 	@ cd ./get_next_line && make
@@ -30,7 +30,7 @@ $(LIB) : $(OBJS)
 
 
 $(NAME) : $(LIB)
-	$(CC) so_long.c $(LIB)  ./mlx_linux/libmlx.a -Lmlx_linux  -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
+	$(CC) so_long.c $(LIB) -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 
 clean :
 	@ rm -f $(OBJS)

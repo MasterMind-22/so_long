@@ -36,10 +36,11 @@ int map_width(char *av)
 
 void    read_map(so_long *s_long, char *av)
 {
-    int i = 0;
+    int i;
     int fd;
     char *read_line;
 
+    i = 0;
     s_long->map_height = map_height(av);
     s_long->map_width = map_width(av);
     fd = open(av, O_RDONLY);
@@ -59,12 +60,17 @@ void    read_map(so_long *s_long, char *av)
 
 void    read_map1(so_long *s_long, char *av)
 {
-    int i = 0;
-    int fd = open(av, O_RDONLY);
+    int i;
+    int fd;
+    char *read_line;
+
+    i = 0;
+    fd = open(av, O_RDONLY);
+    s_long->c_count = check_elements(s_long->map, 'C', av);
     s_long->backtracking_map = (char **)malloc(map_height(av) * sizeof(char *));
     if (!s_long->backtracking_map)
         ft_putstr("Error\nUNABLE TO ALLOCATE MEMORY");
-    char *read_line = get_next_line(fd);
+    read_line = get_next_line(fd);
     while (read_line != NULL)
     {
         s_long->backtracking_map[i] = read_line;

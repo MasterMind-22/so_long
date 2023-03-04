@@ -1,6 +1,6 @@
 #include "so_long.h"
 
-static int count_char_int_line(char *str, int c)
+int count_char_int_line(char *str, int c)
 {
     int i =0;
     int count=0;
@@ -12,17 +12,6 @@ static int count_char_int_line(char *str, int c)
         i++;
     }
     return count;
-}
-
-int extension_check(char *av)
-{
-    int i = 0;
-    while (av[i] != '.')
-        i++;
-    while (av[i] == '.')
-        i++;
-    i--;
-    return(strcmp(".ber", av+i));
 }
 
 int walls_check(char **map, char *av)
