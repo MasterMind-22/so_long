@@ -1,48 +1,64 @@
 #include "so_long.h"
 
-void xpm_to_img(on_screen *fill, void *mlx)
+void xpm_to_img(so_long *s_long)
 {
     int x;
     int y;
 
-    fill->player_img = mlx_xpm_file_to_image(mlx, "./pics/knight.xpm", &x, &y);
-        if (!fill->player_img)
-            ft_putstr("Error\n");
-    fill->wall_img = mlx_xpm_file_to_image(mlx, "./pics/wall.xpm", &x, &y);
-        if (!fill->wall_img)
-            ft_putstr("Error\n");
-    fill->bg_img = mlx_xpm_file_to_image(mlx, "./pics/floor.xpm", &x, &y);
-        if (!fill->bg_img)
-            ft_putstr("Error\n");
-    fill->collectible_img = mlx_xpm_file_to_image(mlx, "./pics/knight.xpm", &x, &y);
-        if (!fill->collectible_img)
-            ft_putstr("Error\n");
-    fill->enemy_img = mlx_xpm_file_to_image(mlx, "./pics/knight.xpm", &x, &y);
-        if (!fill->enemy_img)
-            ft_putstr("Error\n");
+    s_long->player_right_img = mlx_xpm_file_to_image(s_long->mlx, "./pics/player_right.xpm", &x, &y);
+    s_long->player_left_img = mlx_xpm_file_to_image(s_long->mlx, "./pics/player_left.xpm", &x, &y);
+    s_long->wall_img = mlx_xpm_file_to_image(s_long->mlx, "./pics/wall.xpm", &x, &y);
+    s_long->bg_img = mlx_xpm_file_to_image(s_long->mlx, "./pics/floor_4.xpm", &x, &y);
+    s_long->collectible_img = mlx_xpm_file_to_image(s_long->mlx, "./pics/collect.xpm", &x, &y);
+    s_long->door_open_img = mlx_xpm_file_to_image(s_long->mlx, "./pics/open.xpm", &x, &y);
+    s_long->door_closed_img = mlx_xpm_file_to_image(s_long->mlx, "./pics/closed.xpm", &x, &y);
+    if (!s_long->door_closed_img || !s_long->door_open_img || !s_long->collectible_img
+            || !s_long->bg_img || !s_long->wall_img || !s_long->player_right_img
+            || !s_long->player_left_img )
+    {
+        ft_putstr("Error\nInvalid resources");
+        exit(0);
+    }
 }
 
-void print_on_screen(on_screen *fill, void *mlx, void *window, char c)
+void img_to_window(so_long *s_long, char c, int x, int y)
 {
-    int x = 0;
-    int y = 0;
-
-    if (c == '0')
-        mlx_put_image_to_window(mlx, window, fill->bg_img, x*60, y*60);
     if (c == '1')
-        mlx_put_image_to_window(mlx, window, fill->wall_img, x*60, y*60);
-    if (c == 'P')
-        mlx_put_image_to_window(mlx, window, fill->player_img, x*60, y*60);
+        mlx_put_image_to_window(s_long->mlx, s_long->win, s_long->wall_img, x, y);
+    else
+        mlx_put_image_to_window(s_long->mlx, s_long->win, s_long->bg_img, x, y);
     if (c == 'E')
-        mlx_put_image_to_window(mlx, window, fill->enemy_img, x*60, y*60);
+        mlx_put_image_to_window(s_long->mlx, s_long->win, s_long->door_open_img, x, y);
     if (c == 'C')
-        mlx_put_image_to_window(mlx, window, fill->collectible_img, x*60, y*60);
+        mlx_put_image_to_window(s_long->mlx, s_long->win, s_long->collectible_img, x, y);
+    if (c == 'P' && s_long->player_left_right == 1)
+        mlx_put_image_to_window(s_long->mlx, s_long->win, s_long->player_right_img, x, y);
+    else if (c == 'P' && s_long->player_left_right == 0)
+        mlx_put_image_to_window(s_long->mlx, s_long->win, s_long->player_left_img, x, y);
 }
 
-int main(int ac, char **av)
+void print_on_screen(so_long *s_long)
 {
-    char **map = malloc(sizeof(char *)*map_height(av[1]));
-    read_map(av[1]);
-    for (int i = 0; i < map_height(av[1]); i++)
-        printf("%s", map[i]);
+    int x;
+    int y;
+	int i;
+	int j;
+
+    x = 0;
+    y = 0;
+    i = -1;
+    y = -1;
+	xpm_to_img(s_long);
+    mlx_clear_window(s_long->mlx, s_long->win);
+	while (++i < s_long->map_height)
+	{
+		j = -1;
+		x = 0;
+		while (++j < s_long->map_width - 1)
+		{
+			img_to_window(s_long, s_long->map[i][j], x, y);
+			x+=60;
+		}
+    	y+=60;
+	}
 }

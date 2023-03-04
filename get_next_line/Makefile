@@ -6,13 +6,14 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 OBJ = $(SRCS:.c=.o)
 
-all : $(NAME)
 
 $(NAME) : $(OBJ)
 	@ ar -r $@ $? && cp get_next_line.a ../
 
 %.o : %.c get_next_line.h
 	@ $(CC) $(CFLAGS) -c $<
+
+all : $(NAME)
 
 clean :
 	@ rm -f $(OBJ)

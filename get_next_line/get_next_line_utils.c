@@ -6,15 +6,15 @@
 /*   By: yonadry <yonadry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 18:50:22 by yonadry           #+#    #+#             */
-/*   Updated: 2022/11/28 18:51:00 by yonadry          ###   ########.fr       */
+/*   Updated: 2023/02/21 11:22:32 by yonadry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	ft_strlen(char *s)
+int	ft_strlen(char *s)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
 	if (*s)
