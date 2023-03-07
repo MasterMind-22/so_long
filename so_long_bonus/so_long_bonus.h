@@ -1,5 +1,5 @@
-#ifndef SO_LONG_H
-#define SO_LONG_H
+#ifndef SO_LONG_BONUS_H
+#define SO_LONG_BONUS_H
 
 #define BUFFER_SIZE 10
 
@@ -9,15 +9,7 @@
 #include<string.h>
 #include<stdlib.h>
 #include<fcntl.h>
-#include "./get_next_line/get_next_line.h"
-
-typedef struct m_checker{
-	int count_player;
-	int count_ones;
-	int count_zeros;
-	int count_exit;
-	int count_collect;
-} map_checker;
+#include "../get_next_line/get_next_line.h"
 
 typedef struct too_long{
 	char **map;
@@ -63,8 +55,8 @@ void	xpm_to_img(so_long *s_long);
 void	img_to_window(so_long *s_long, char c, int x, int y);
 int		get_keycode(int keycode, so_long *s_long);
 void	print_on_screen(so_long *s_long);
-int close_mark(int keycode, so_long s_long);
-int count_char_int_line(char *str, int c);
+int 	close_mark(int keycode, so_long s_long);
+int 	count_char_int_line(char *str, int c);
 int	ft_strcmp(const char *s1, const char *s2);
 
 #endif

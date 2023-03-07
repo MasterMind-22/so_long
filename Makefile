@@ -1,6 +1,10 @@
 NAME = so_long
+BONUS_NAME = so_long_bonus
+
 LIB = so_long.a
-SRCS =	map_reader.c \
+LIB_BONUS = so_long_bonus.a
+SRCS =	\
+		map_reader.c \
 		map_check_tools.c \
 		other_functions.c \
 		check_all.c \
@@ -10,7 +14,22 @@ SRCS =	map_reader.c \
 		./get_next_line/get_next_line.c \
 		./get_next_line/get_next_line_utils.c \
 
+BONUS_SRCS =	\
+				map_reader.c \
+				map_check_tools.c \
+				other_functions.c \
+				check_all.c \
+				backtracking.c \
+				./so_long_bonus/fill_structs_bonus.c \
+				./so_long_bonus/move_player_bonus.c \
+				./get_next_line/get_next_line.c \
+				./get_next_line/get_next_line_utils.c \
+
 OBJS = $(SRCS:.c=.o) \
+		get_next_line.o \
+		get_next_line_utils.o \
+
+BONUS_OBJS = $(BONUS_SRCS:.c=.o) \
 		get_next_line.o \
 		get_next_line_utils.o \
 
@@ -21,6 +40,8 @@ DATE = $(shell date)
 
 all :  $(NAME)
 
+bonus :  $(BONUS_NAME)
+
 %.o : %.c so_long.h
 	$(CC) $(CFLAGS) -Imlx -c $<
 
@@ -28,9 +49,16 @@ $(LIB) : $(OBJS)
 	@ cd ./get_next_line && make
 	@ ar -r $@ $?
 
+$(LIB_BONUS) : $(BONUS_OBJS)
+	@ cd ./get_next_line && make
+	@ ar -r $@ $?
+
 
 $(NAME) : $(LIB)
 	$(CC) so_long.c $(LIB) -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+
+$(BONUS_NAME) : $(LIB_BONUS)
+	$(CC) ./so_long_bonus/so_long_bonus.c $(LIB_BONUS) -lmlx -framework OpenGL -framework AppKit -o $(BONUS_NAME)
 
 clean :
 	@ rm -f $(OBJS)
