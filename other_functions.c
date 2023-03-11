@@ -31,7 +31,6 @@ int	ft_strcmp(const char *s1, const char *s2)
 		i++;
 	}
 	return (0);
-<<<<<<< HEAD
 }
 
 void	ft_putnbr(int n)
@@ -39,6 +38,4 @@ void	ft_putnbr(int n)
 	if (n >= 10)
 		ft_putnbr(n / 10);
 	ft_putchar((n % 10) + '0');
-=======
->>>>>>> 8db0a2ad4484516ddf7317c8eaac23254dd62965
 }

@@ -2,7 +2,7 @@
 #define SO_LONG_H
 
 
-#include <mlx.h>
+#include "./mlx_linux/mlx.h"
 #include<stdio.h>
 #include<unistd.h>
 #include<string.h>
@@ -35,13 +35,10 @@ typedef struct too_long{
 	char *door_closed_img;
 	char *player_right_img;
 	char *door_open_img;
-<<<<<<< HEAD
 	int *a;
 	int *b;
 	int k;
 	int fd;
-=======
->>>>>>> 8db0a2ad4484516ddf7317c8eaac23254dd62965
 
 } so_long;
 
@@ -50,15 +47,9 @@ int map_height(char *av);
 void    read_map(so_long *s_long, char *av);
 void    read_map1(so_long *s_long, char *av);
 void	extension_check(char *av);
-<<<<<<< HEAD
 int walls_check(so_long *s_long);
 int check_elements(so_long *s_long, char c);
 int check_strange(so_long *s_long);
-=======
-int		walls_check(char **map, char *av);
-int		check_elements(char **map, char c, char *av);
-int		check_strange(char **map, char *av);
->>>>>>> 8db0a2ad4484516ddf7317c8eaac23254dd62965
 void	ft_putstr(char *str);
 void	check_map(so_long *s_long, char *av);
 int backtrack(so_long *s_long,char c, int i, int j);
@@ -70,11 +61,8 @@ void	print_on_screen(so_long *s_long);
 int close_mark(int keycode, so_long s_long);
 int count_char_int_line(char *str, int c);
 int	ft_strcmp(const char *s1, const char *s2);
-<<<<<<< HEAD
 void c_backtracking(so_long *s_long, char *av);
 void	ft_putnbr(int n);
 void	ft_putchar(char c);
-=======
->>>>>>> 8db0a2ad4484516ddf7317c8eaac23254dd62965
 
 #endif

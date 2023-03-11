@@ -14,10 +14,7 @@ int count_char_int_line(char *str, int c)
     return count;
 }
 
-<<<<<<< HEAD
 int walls_check(so_long *s_long)
-int walls_check(char **map, char *av)
->>>>>>> 8db0a2ad4484516ddf7317c8eaac23254dd62965
 {
     int i;
     int j;

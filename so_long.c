@@ -1,35 +1,19 @@
 #include "so_long.h"
 
-<<<<<<< HEAD
 // int key(int keycode, so_long *s_long)
 // {
 // 	// (void)s_long;
 // 	printf("%d\n", keycode);
 // }
-=======
-// int check_extension(char av)
-// {
-// 	if ()
-// }
-
->>>>>>> 8db0a2ad4484516ddf7317c8eaac23254dd62965
 int	main(int ac, char **av)
 {
 	if (ac == 2)
 	{
-<<<<<<< HEAD
 		// if (ft_strcmp(".ber", av[1]+(ft_strlen(av[1])-4)) != 0)
 		// {
 		// 	ft_putstr("Error\nInavlid Extension");
 		// 	exit(0);
 		// }
-=======
-		if (ft_strcmp(".ber", av[1]+(ft_strlen(av[1])-4)) != 0)
-		{
-			ft_putstr("Error\nInavlid Extension");
-			exit(0);
-		}
->>>>>>> 8db0a2ad4484516ddf7317c8eaac23254dd62965
 		so_long *s_long;
 
 		s_long = malloc(sizeof(so_long));
