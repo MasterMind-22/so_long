@@ -1,4 +1,4 @@
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 // int key(int keycode, so_long *s_long)
 // {

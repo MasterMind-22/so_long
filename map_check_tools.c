@@ -1,6 +1,6 @@
 #include "so_long.h"
 
-static int count_char_int_line(char *str, int c)
+int count_char_int_line(char *str, int c)
 {
     int i =0;
     int count=0;
@@ -14,18 +14,7 @@ static int count_char_int_line(char *str, int c)
     return count;
 }
 
-int extension_check(char *av)
-{
-    int i = 0;
-    while (av[i] != '.')
-        i++;
-    while (av[i] == '.')
-        i++;
-    i--;
-    return(strcmp(".ber", av+i));
-}
-
-int walls_check(char **map, char *av)
+int walls_check(so_long *s_long)
 {
     int i;
     int j;
@@ -34,12 +23,12 @@ int walls_check(char **map, char *av)
     i=0;
     j=0;
     result = 0;
-    while (i<map_height(av))
+    while (i<s_long->map_height)
     {
         j=0;
-        while (j<ft_strlen(map[0]) - 1)
+        while (j<s_long->map_width)
         {
-            if (map[i][j] != '1' && (i == 0 || j == 0 || i == map_height(av)-1 || j == ft_strlen(map[0])-2))
+            if (s_long->map[i][j] != '1' && (i == 0 || j == 0 || i == s_long->map_height-1 || j == s_long->map_width-1))
             {
                 result++;
                 break;
@@ -51,20 +40,20 @@ int walls_check(char **map, char *av)
     return (result);
 }
 
-int check_elements(char **map, char c, char *av)
+int check_elements(so_long *s_long, char c)
 {
     int i = 0;
     int count = 0;
 
-    while (i < map_height(av))
+    while (i < s_long->map_height)
     {
-        count += count_char_int_line(map[i], c);
+        count += count_char_int_line(s_long->map[i], c);
         i++;
     }
     return (count);
 }
 
-int check_strange(char **map, char *av)
+int check_strange(so_long *s_long)
 {
     int i = 0;
     int count = 0;
@@ -72,10 +61,10 @@ int check_strange(char **map, char *av)
     char *elements = "01ECP";
     while (elements[i])
     {
-        count += check_elements(map, elements[i], av);
+        count += check_elements(s_long, elements[i]);
         i++;
     }
-    if (count == map_height(av) * (map_width(av)-1))
+    if (count == s_long->map_height * (s_long->map_width))
         return (1);
     return (0);
 }

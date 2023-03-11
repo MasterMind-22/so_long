@@ -1,9 +1,8 @@
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void move_handler(so_long *s_long, int x, int y)
 {
-	if (s_long->map[s_long->y_player+y][s_long->x_player+x] == 'E'
-		&& s_long->c_count == 0)
+	if (s_long->map[s_long->y_player+y][s_long->x_player+x] == 'E')
 		exit(0);
 	if ((s_long->map[s_long->y_player+y][s_long->x_player+x] == '0'
 		|| s_long->map[s_long->y_player+y][s_long->x_player+x] == 'C'))
@@ -15,8 +14,7 @@ void move_handler(so_long *s_long, int x, int y)
 	}
 	s_long->x_player+=x;
 	s_long->y_player+=y;
-	ft_putnbr(s_long->print_move++);
-	ft_putchar('\n');
+	printf("%d\n", s_long->print_move++);
 }
 
 int close_mark(int keycode, so_long s_long)
@@ -28,7 +26,7 @@ int close_mark(int keycode, so_long s_long)
 
 int get_keycode(int keycode, so_long *s_long)
 {
-	if (keycode == 65307) // close mark
+	if (keycode == 65307)
 		exit(0);
 	if ((keycode == 100 || keycode == 124)
 		&& s_long->map[s_long->y_player][s_long->x_player+1] != '1') //D == Imac : 2 - Linux : 100

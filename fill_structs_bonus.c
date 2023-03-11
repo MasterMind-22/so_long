@@ -1,4 +1,4 @@
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void xpm_to_img(so_long *s_long)
 {
