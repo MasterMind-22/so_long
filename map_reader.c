@@ -52,8 +52,13 @@ void    read_map1(so_long *s_long, char *av)
 
     i = 0;
     fd = open(av, O_RDONLY);
+<<<<<<< HEAD
     s_long->c_count = check_elements(s_long, 'C');
     s_long->backtracking_map = (char **)malloc(s_long->map_height * sizeof(char *));
+=======
+    s_long->c_count = check_elements(s_long->map, 'C', av);
+    s_long->backtracking_map = (char **)malloc(map_height(av) * sizeof(char *));
+>>>>>>> 8db0a2ad4484516ddf7317c8eaac23254dd62965
     if (!s_long->backtracking_map)
         ft_putstr("Error\nUNABLE TO ALLOCATE MEMORY");
     read_line = get_next_line(fd);

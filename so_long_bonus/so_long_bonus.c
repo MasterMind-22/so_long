@@ -1,35 +1,19 @@
-#include "so_long.h"
+#include "so_long_bonus.h"
 
-<<<<<<< HEAD
-// int key(int keycode, so_long *s_long)
-// {
-// 	// (void)s_long;
-// 	printf("%d\n", keycode);
-// }
-=======
 // int check_extension(char av)
 // {
 // 	if ()
 // }
 
->>>>>>> 8db0a2ad4484516ddf7317c8eaac23254dd62965
 int	main(int ac, char **av)
 {
 	if (ac == 2)
 	{
-<<<<<<< HEAD
-		// if (ft_strcmp(".ber", av[1]+(ft_strlen(av[1])-4)) != 0)
-		// {
-		// 	ft_putstr("Error\nInavlid Extension");
-		// 	exit(0);
-		// }
-=======
 		if (ft_strcmp(".ber", av[1]+(ft_strlen(av[1])-4)) != 0)
 		{
 			ft_putstr("Error\nInavlid Extension");
 			exit(0);
 		}
->>>>>>> 8db0a2ad4484516ddf7317c8eaac23254dd62965
 		so_long *s_long;
 
 		s_long = malloc(sizeof(so_long));
@@ -38,7 +22,7 @@ int	main(int ac, char **av)
 		read_map1(s_long, av[1]);
 		check_map(s_long, av[1]);
 		s_long->mlx = mlx_init();
-		s_long->win = mlx_new_window(s_long->mlx, 60*(s_long->map_width), 60*(s_long->map_height), "so_long");
+		s_long->win = mlx_new_window(s_long->mlx, 60*(s_long->map_width-1), 60*(s_long->map_height), "hello");
 		print_on_screen(s_long);
 		mlx_hook(s_long->win, 2, 1L<<0, get_keycode, s_long);
 		mlx_hook(s_long->win, 17, 1L<<0, close_mark, s_long);
