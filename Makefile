@@ -55,11 +55,11 @@ $(LIB_BONUS) : $(BONUS_OBJS)
 
 
 $(NAME) : $(LIB)
-	$(CC) so_long.c $(LIB) libmlx.a -Lmlx_linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
+	$(CC) so_long.c $(LIB) -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 
 $(BONUS_NAME) : $(LIB_BONUS)
-	$(CC) so_long_bonus.c $(LIB_BONUS) libmlx.a -Lmlx_linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(BONUS_NAME)
-# $(CC) ./so_long_bonus/so_long_bonus.c $(LIB_BONUS) -lmlx -framework OpenGL -framework AppKit -o $(BONUS_NAME)
+	$(CC) ./so_long_bonus/so_long_bonus.c $(LIB_BONUS) -lmlx -framework OpenGL -framework AppKit -o $(BONUS_NAME)
+#	$(CC) so_long_bonus.c $(LIB_BONUS) libmlx.a -Lmlx_linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(BONUS_NAME)
 
 clean :
 	@ rm -f $(OBJS) $(BONUS_OBJS)

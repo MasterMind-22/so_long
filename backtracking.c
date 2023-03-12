@@ -1,5 +1,14 @@
 #include "so_long.h"
 
+void free_ptr(char **map, int len)
+{
+	int i;
+
+	i = -1;
+	while (++i < len)
+		free(map[i]);
+}
+
 void fillx(so_long *s_long)
 {
 	for (int i=0; i < s_long->map_height; i++)
@@ -46,15 +55,17 @@ void c_backtracking(so_long *s_long, char *av)
 	s_long->b = (int *)malloc(sizeof(int)*s_long->c_count);
 	while (++i < s_long->c_count)
 	{
-		if (backtrack(s_long, 'C', s_long->x_player, s_long->y_player) != 1
-			&& i < s_long->c_count)
+		if (backtrack(s_long, 'C', s_long->y_player, s_long->x_player) != 1
+			&& i <= s_long->c_count)
 		{
 			ft_putstr("Error\nNo Valid Path to Collectibles");
 			exit(0);
 		}
-		read_map1(s_long, av);
+		free_ptr(s_long->backtracking_map, s_long->map_height);
+		free(s_long->backtracking_map);
+		s_long->backtracking_map = read_map1(s_long, av);
 		s_long->k = -1;
-		while (++s_long->k < i+1)
+		while (++s_long->k <= i)
 			s_long->backtracking_map[s_long->b[s_long->k]][s_long->a[s_long->k]] = '0';
 	}
 }

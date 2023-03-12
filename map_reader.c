@@ -7,6 +7,11 @@ int map_height(char *av)
     int fd;
 
     fd = open(av, O_RDONLY);
+    if (fd == -1)
+    {
+        ft_putstr("Error\nFILE NOT FOUNT");
+        exit(0);
+    }
     map_height = 0;
     line = get_next_line(fd);
     while (line)
@@ -44,24 +49,26 @@ void    read_map(so_long *s_long, char *av)
     fillx(s_long);
 }
 
-void    read_map1(so_long *s_long, char *av)
+char    **read_map1(so_long *s_long, char *av)
 {
     int i;
     int fd;
     char *read_line;
+    char **backtracking_map;
 
     i = 0;
     fd = open(av, O_RDONLY);
     s_long->c_count = check_elements(s_long, 'C');
-    s_long->backtracking_map = (char **)malloc(s_long->map_height * sizeof(char *));
-    if (!s_long->backtracking_map)
+    backtracking_map = (char **)malloc(s_long->map_height * sizeof(char *));
+    if (!backtracking_map)
         ft_putstr("Error\nUNABLE TO ALLOCATE MEMORY");
     read_line = get_next_line(fd);
     while (read_line != NULL)
     {
-        s_long->backtracking_map[i] = read_line;
+        backtracking_map[i] = read_line;
         i++;
         read_line = get_next_line(fd);
     }
     close(fd);
+    return(backtracking_map);
 }

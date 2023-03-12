@@ -2,6 +2,7 @@
 
 void check_map(so_long *s_long, char *av)
 {
+    (void)av;
     if (walls_check(s_long) != 0)
     {
         ft_putstr("Error\nTHE MAP MUST BE CLOSED/SURROUNDED BY WALLS!");
