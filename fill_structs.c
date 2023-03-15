@@ -48,7 +48,6 @@ void print_on_screen(so_long *s_long)
 
     i = -1;
     y = -1;
-	xpm_to_img(s_long);
     mlx_clear_window(s_long->mlx, s_long->win);
 	while (++i < s_long->map_height)
 	{

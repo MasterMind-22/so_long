@@ -2,6 +2,7 @@
 #define SO_LONG_BONUS_H
 
 
+
 #include "./mlx_linux/mlx.h"
 #include<stdio.h>
 #include<unistd.h>
@@ -18,8 +19,6 @@ typedef struct too_long{
 	int c_count;
 	int player_left_right;
 	int print_move;
-	int *c_xpos;
-	int *c_ypos;
 
 	// Player Position
 	int x_player;
@@ -44,9 +43,10 @@ typedef struct too_long{
 
 } so_long;
 
+void	ft_putnbr_fd(int n);
 int map_height(char *av);
 void    read_map(so_long *s_long, char *av);
-void    read_map1(so_long *s_long, char *av);
+char    **read_map1(so_long *s_long, char *av);
 void	extension_check(char *av);
 int walls_check(so_long *s_long);
 int check_elements(so_long *s_long, char c);
@@ -64,7 +64,8 @@ int count_char_int_line(char *str, int c);
 int	ft_strcmp(const char *s1, const char *s2);
 void c_backtracking(so_long *s_long, char *av);
 void	ft_putnbr(int n);
-
 void	ft_putchar(char c);
+void free_ptr(char **map, int len);
+char *ft_itoa(int n);
 
 #endif

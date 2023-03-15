@@ -2,19 +2,26 @@
 
 void move_handler(so_long *s_long, int x, int y)
 {
-	if (s_long->map[s_long->y_player+y][s_long->x_player+x] == 'E')
-		exit(0);
-	if ((s_long->map[s_long->y_player+y][s_long->x_player+x] == '0'
-		|| s_long->map[s_long->y_player+y][s_long->x_player+x] == 'C'))
-	{
-		if (s_long->map[s_long->y_player+y][s_long->x_player+x] == 'C')
-			s_long->c_count--;
-		s_long->map[s_long->y_player+y][s_long->x_player+x] = 'P';
-		s_long->map[s_long->y_player][s_long->x_player] = '0';
-	}
 	s_long->x_player+=x;
 	s_long->y_player+=y;
-	printf("%d\n", s_long->print_move++);
+	if ((s_long->map[s_long->y_player][s_long->x_player] == '0'
+		|| s_long->map[s_long->y_player][s_long->x_player] == 'C'))
+	{
+		if (s_long->map[s_long->y_player][s_long->x_player] == 'C')
+			s_long->c_count--;
+		s_long->map[s_long->y_player][s_long->x_player] = 'P';
+		s_long->map[s_long->y_player-y][s_long->x_player-x] = '0';
+		mlx_string_put(s_long->mlx, s_long->win, 0, 0, 0x03C04A, ft_itoa(s_long->print_move));
+	}
+	if (s_long->map[s_long->y_player][s_long->x_player] == 'E'
+		&& s_long->c_count == 0)
+		exit(0);
+	else if (s_long->map[s_long->y_player][s_long->x_player] == 'E'
+		&& s_long->c_count != 0)
+	{
+		s_long->x_player-=x;
+		s_long->y_player-=y;
+	}
 }
 
 int close_mark(int keycode, so_long s_long)
@@ -26,7 +33,7 @@ int close_mark(int keycode, so_long s_long)
 
 int get_keycode(int keycode, so_long *s_long)
 {
-	if (keycode == 65307)
+	if (keycode == 65307) // close mark
 		exit(0);
 	if ((keycode == 100 || keycode == 124)
 		&& s_long->map[s_long->y_player][s_long->x_player+1] != '1') //D == Imac : 2 - Linux : 100

@@ -27,12 +27,12 @@ void img_to_window(so_long *s_long, char c, int x, int y)
         mlx_put_image_to_window(s_long->mlx, s_long->win, s_long->wall_img, x, y);
     else
         mlx_put_image_to_window(s_long->mlx, s_long->win, s_long->bg_img, x, y);
+    if (c == 'C')
+        mlx_put_image_to_window(s_long->mlx, s_long->win, s_long->collectible_img, x, y);
     if (c == 'E' && s_long->c_count == 0)
         mlx_put_image_to_window(s_long->mlx, s_long->win, s_long->door_open_img, x, y);
     else if (c == 'E' && s_long->c_count != 0)
         mlx_put_image_to_window(s_long->mlx, s_long->win, s_long->door_closed_img, x, y);
-    if (c == 'C')
-        mlx_put_image_to_window(s_long->mlx, s_long->win, s_long->collectible_img, x, y);
     if (c == 'P' && s_long->player_left_right == 1)
         mlx_put_image_to_window(s_long->mlx, s_long->win, s_long->player_right_img, x, y);
     else if (c == 'P' && s_long->player_left_right == 0)
@@ -48,7 +48,6 @@ void print_on_screen(so_long *s_long)
 
     i = -1;
     y = -1;
-	xpm_to_img(s_long);
     mlx_clear_window(s_long->mlx, s_long->win);
 	while (++i < s_long->map_height)
 	{
