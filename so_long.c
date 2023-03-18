@@ -30,16 +30,16 @@ int	main(int ac, char **av)
 		read_map(s_long, av[1]);
 		s_long->backtracking_map = read_map1(s_long, av[1]);
 		check_map(s_long, av[1]);
-		s_long->mlx = mlx_init();
-		s_long->win = mlx_new_window(s_long->mlx, 60*(s_long->map_width), 60*(s_long->map_height), "so_long");
-		xpm_to_img(s_long);
-		print_on_screen(s_long);
-		mlx_hook(s_long->win, 2, 1L<<0, get_keycode, s_long);
-		mlx_hook(s_long->win, 17, 1L<<0, close_mark, s_long);
-		mlx_loop(s_long->mlx);
-		free_ptr(s_long->map, s_long->map_height);
-		mlx_destroy_window(s_long->mlx, s_long->win);
-		free_fun1(s_long);
+		// s_long->mlx = mlx_init();
+		// s_long->win = mlx_new_window(s_long->mlx, 60*(s_long->map_width), 60*(s_long->map_height), "so_long");
+		// xpm_to_img(s_long);
+		// print_on_screen(s_long);
+		// mlx_hook(s_long->win, 2, 1L<<0, get_keycode, s_long);
+		// mlx_hook(s_long->win, 17, 1L<<0, close_mark, s_long);
+		// mlx_loop(s_long->mlx);
+		// free_ptr(s_long->map, s_long->map_height);
+		// mlx_destroy_window(s_long->mlx, s_long->win);
+		// free_fun1(s_long);
 	}
 	else
 		ft_putstr("Error\nPlease input a valid argument");

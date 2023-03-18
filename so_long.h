@@ -65,5 +65,6 @@ void c_backtracking(so_long *s_long, char *av);
 void	ft_putnbr(int n);
 void	ft_putchar(char c);
 void free_ptr(char **map, int len);
+void check_len(so_long *s_long);
 
 #endif

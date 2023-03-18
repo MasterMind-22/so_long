@@ -68,3 +68,24 @@ int check_strange(so_long *s_long)
         return (1);
     return (0);
 }
+
+void check_len(so_long *s_long)
+{
+    int i;
+
+    i = s_long->map_height;
+    if (s_long->map_width != ft_strlen(s_long->map[i-1]))
+    {
+        ft_putstr("Error\n");
+        exit(0);    
+    }
+    while (i-2 >= 0)
+    {
+        if (s_long->map_width != ft_strlen(s_long->map[i-2])-1)
+        {
+            ft_putstr("Error\n");
+            exit(0);
+        }
+        i--;
+    }
+}
