@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: yonadry <yonadry@student.42.fr>            +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/03/19 14:14:12 by yonadry           #+#    #+#              #
+#    Updated: 2023/03/19 16:33:14 by yonadry          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = so_long
 BONUS_NAME = so_long_bonus
 
@@ -13,6 +25,7 @@ SRCS =	\
 		move_player.c \
 		./get_next_line/get_next_line.c \
 		./get_next_line/get_next_line_utils.c \
+		itoa.c \
 
 BONUS_SRCS =	\
 		map_reader.c \
@@ -20,6 +33,7 @@ BONUS_SRCS =	\
 		other_functions.c \
 		check_all.c \
 		backtracking.c \
+		itoa.c \
 		fill_structs_bonus.c \
 		move_player_bonus.c \
 		./get_next_line/get_next_line.c \
@@ -55,11 +69,12 @@ $(LIB_BONUS) : $(BONUS_OBJS)
 
 
 $(NAME) : $(LIB)
-	$(CC) so_long.c $(LIB) libmlx.a -Lmlx_linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz  -o $(NAME)
+	$(CC) so_long.c $(LIB) -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+#	$(CC) so_long.c $(LIB) libmlx.a -Lmlx_linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz  -o $(NAME)
 
 $(BONUS_NAME) : $(LIB_BONUS)
-	$(CC) so_long_bonus.c $(LIB_BONUS) libmlx.a -Lmlx_linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(BONUS_NAME)
-#	 $(CC) ./so_long_bonus/so_long_bonus.c $(LIB_BONUS) -lmlx -framework OpenGL -framework AppKit -o $(BONUS_NAME)
+	 $(CC) so_long_bonus.c $(LIB_BONUS) -lmlx -framework OpenGL -framework AppKit -o $(BONUS_NAME)
+#	$(CC) so_long_bonus.c $(LIB_BONUS) libmlx.a -Lmlx_linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(BONUS_NAME)
 
 clean :
 	@ rm -f $(OBJS) $(BONUS_OBJS)

@@ -1,58 +1,82 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   backtracking.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yonadry <yonadry@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/19 14:23:13 by yonadry           #+#    #+#             */
+/*   Updated: 2023/03/19 14:35:21 by yonadry          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
-void free_ptr(char **map, int len)
+void	free_ptr(char **map, int len)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (++i < len)
 		free(map[i]);
 }
 
-void fillx(so_long *s_long)
+void	fillx(t_long *s_long)
 {
-	for (int i=0; i < s_long->map_height; i++)
-		for (int j=0; j< s_long->map_width; j++)
+	int	j;
+	int	i;
+
+	i = 0;
+	j = 0;
+	while (i < s_long->map_height)
+	{
+		j = 0;
+		while (j < s_long->map_width)
 		{
 			if (s_long->map[i][j] == 'P')
 			{
-				s_long->x_player=j;
-				s_long->y_player=i;
+				s_long->x_player = j;
+				s_long->y_player = i;
 			}
+			j++;
 		}
+		i++;
+	}
 }
 
-int backtrack(so_long *s_long,char c, int i, int j)
+int	backtrack(t_long *s_long, char c, int i, int j)
 {
-	static int x = 0;
+	static int	x;
+
+	x = 0;
 	if (s_long->backtracking_map[i][j] == c)
 	{
 		s_long->a[x] = j;
 		s_long->b[x] = i;
 		x++;
-		return 1;
+		return (1);
 	}
 	if (s_long->backtracking_map[i][j] == '1')
-		return 0;
+		return (0);
 	s_long->backtracking_map[i][j] = '1';
-	if (backtrack(s_long, c, i, j+1) == 1)
-		return 1;
-	if (backtrack(s_long, c, i+1, j) == 1)
-		return 1;
-	if (backtrack(s_long, c, i-1, j) == 1)
-		return 1;
-	if (backtrack(s_long, c, i, j-1) == 1)
-		return 1;
-	return 0;
+	if (backtrack(s_long, c, i, j + 1) == 1)
+		return (1);
+	if (backtrack(s_long, c, i + 1, j) == 1)
+		return (1);
+	if (backtrack(s_long, c, i - 1, j) == 1)
+		return (1);
+	if (backtrack(s_long, c, i, j - 1) == 1)
+		return (1);
+	return (0);
 }
 
-void c_backtracking(so_long *s_long, char *av)
+void	c_backtracking(t_long *s_long, char *av)
 {
-	int i;
+	int	i;
 
 	i = -1;
-	s_long->a = (int *)malloc(sizeof(int)*s_long->c_count);
-	s_long->b = (int *)malloc(sizeof(int)*s_long->c_count);
+	s_long->a = (int *)malloc(sizeof(int) * s_long->c_count);
+	s_long->b = (int *)malloc(sizeof(int) * s_long->c_count);
 	while (++i < s_long->c_count)
 	{
 		if (backtrack(s_long, 'C', s_long->y_player, s_long->x_player) != 1
@@ -66,6 +90,7 @@ void c_backtracking(so_long *s_long, char *av)
 		s_long->backtracking_map = read_map1(s_long, av);
 		s_long->k = -1;
 		while (++s_long->k <= i)
-			s_long->backtracking_map[s_long->b[s_long->k]][s_long->a[s_long->k]] = '0';
+			s_long->backtracking_map[s_long->b[s_long->k]]
+			[s_long->a[s_long->k]] = '0';
 	}
 }

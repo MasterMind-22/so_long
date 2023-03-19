@@ -6,7 +6,7 @@
 /*   By: yonadry <yonadry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 18:49:34 by yonadry           #+#    #+#             */
-/*   Updated: 2023/03/06 16:44:30 by yonadry          ###   ########.fr       */
+/*   Updated: 2023/03/19 14:46:49 by yonadry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # include<fcntl.h>
 
 char	*get_next_line(int fd);
-int	ft_strlen(char *s);
+int		ft_strlen(char *s);
 int		newline_found(char *read_line);
 char	*ft_strjoin(char *s1, char *s2);
 char	*ft_strdup(char *s1);
