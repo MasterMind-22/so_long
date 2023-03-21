@@ -6,7 +6,7 @@
 #    By: yonadry <yonadry@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/19 14:14:12 by yonadry           #+#    #+#              #
-#    Updated: 2023/03/19 16:33:14 by yonadry          ###   ########.fr        #
+#    Updated: 2023/03/20 12:16:57 by yonadry          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,7 @@ BONUS_SRCS =	\
 		move_player_bonus.c \
 		./get_next_line/get_next_line.c \
 		./get_next_line/get_next_line_utils.c \
+		animation.c \
 
 OBJS = $(SRCS:.c=.o) \
 		get_next_line.o \

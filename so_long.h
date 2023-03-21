@@ -6,7 +6,7 @@
 /*   By: yonadry <yonadry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 13:59:52 by yonadry           #+#    #+#             */
-/*   Updated: 2023/03/19 16:28:44 by yonadry          ###   ########.fr       */
+/*   Updated: 2023/03/20 12:04:22 by yonadry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,13 @@ typedef struct too_long
 	void	*win;
 	void	*mlx;
 
-	char	*wall_img;
-	char	*bg_img;
-	char	*player_left_img;
-	char	*collectible_img;
-	char	*door_closed_img;
-	char	*player_right_img;
-	char	*door_open_img;
+	void	*wall_img;
+	void	*bg_img;
+	void	*player_left_img;
+	void	*collectible_img;
+	void	*door_closed_img;
+	void	*player_right_img;
+	void	*door_open_img;
 	int		*a;
 	int		*b;
 	int		k;

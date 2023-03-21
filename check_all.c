@@ -6,7 +6,7 @@
 /*   By: yonadry <yonadry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 14:20:32 by yonadry           #+#    #+#             */
-/*   Updated: 2023/03/19 14:23:59 by yonadry          ###   ########.fr       */
+/*   Updated: 2023/03/20 18:25:36 by yonadry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	check_1(t_long *s_long)
 
 void	check_map(t_long *s_long, char *av)
 {
+	check_1(s_long);
 	if (check_elements(s_long, 'E') != 1)
 	{
 		ft_putstr("Error\nTHE MAP MUST CONTAIN 1 EXIT!");

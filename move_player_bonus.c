@@ -6,7 +6,7 @@
 /*   By: yonadry <yonadry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 14:11:20 by yonadry           #+#    #+#             */
-/*   Updated: 2023/03/19 14:54:03 by yonadry          ###   ########.fr       */
+/*   Updated: 2023/03/20 16:52:55 by yonadry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void	move_handler(t_long *s_long, int x, int y)
 		s_long->x_player -= x;
 		s_long->y_player -= y;
 	}
-	print_on_screen(s_long);
 }
 
 int	close_mark(int keycode, t_long s_long)
@@ -46,8 +45,6 @@ int	close_mark(int keycode, t_long s_long)
 
 int	get_keycode(int keycode, t_long *s_long)
 {
-	char	*move;
-
 	if (keycode == 65307)
 		exit(0);
 	if ((keycode == 2 || keycode == 124)
@@ -68,7 +65,5 @@ int	get_keycode(int keycode, t_long *s_long)
 	if ((keycode == 13 || keycode == 126)
 		&& s_long->map[s_long->y_player - 1][s_long->x_player] != '1')
 		move_handler(s_long, 0, -1);
-	move = ft_itoa(s_long->print_move);
-	mlx_string_put(s_long->mlx, s_long->win, 0, 0, 0xFFFFFF, move);
-	return (free(move), 0);
+	return (0);
 }

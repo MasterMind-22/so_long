@@ -6,11 +6,21 @@
 /*   By: yonadry <yonadry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 13:52:21 by yonadry           #+#    #+#             */
-/*   Updated: 2023/03/19 14:51:33 by yonadry          ###   ########.fr       */
+/*   Updated: 2023/03/20 17:18:15 by yonadry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+static void frame_protect(t_long *s_long, char *av)
+{
+	if(s_long->map_height * 60 > 1800 || s_long->map_width * 60 > 3200
+		|| ft_strcmp(".ber", av + (ft_strlen(av) - 4)) != 0)
+	{
+		ft_putstr("Error\n");
+		exit(0);
+	}
+}
 
 static void	free_fun1(t_long *s_long)
 {
@@ -28,13 +38,9 @@ int	main(int ac, char **av)
 	s_long = malloc(sizeof(t_long));
 	if (ac == 2)
 	{
-		if (ft_strcmp(".ber", av[1] + (ft_strlen(av[1]) - 4)) != 0)
-		{
-			ft_putstr("Error\nInavlid Extension");
-			exit(0);
-		}
 		s_long->print_move = 1;
 		read_map(s_long, av[1]);
+		frame_protect(s_long, av[1]);
 		check_map(s_long, av[1]);
 		s_long->mlx = mlx_init();
 		s_long->win = mlx_new_window(s_long->mlx, 60 * (s_long->map_width),

@@ -6,7 +6,7 @@
 /*   By: yonadry <yonadry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 14:17:39 by yonadry           #+#    #+#             */
-/*   Updated: 2023/03/19 14:43:18 by yonadry          ###   ########.fr       */
+/*   Updated: 2023/03/20 19:04:36 by yonadry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,12 @@ void	img_to_window(t_long *s_long, char c, int x, int y)
 	if (c == 'E' && s_long->c_count != 0)
 		mlx_put_image_to_window(s_long->mlx, s_long->win,
 			s_long->door_closed_img, x, y);
-	if (c == 'P' && s_long->player_left_right == 1)
-		mlx_put_image_to_window(s_long->mlx, s_long->win,
-			s_long->player_right_img, x, y);
-	if (c == 'P' && s_long->player_left_right == 0)
+	if (c == 'P')
 		mlx_put_image_to_window(s_long->mlx, s_long->win,
 			s_long->player_left_img, x, y);
+	// if (c == 'P' && s_long->player_left_right == 0)
+	// 	mlx_put_image_to_window(s_long->mlx, s_long->win,
+	// 		s_long->player_left_img, x, y);
 }
 
 void	print_on_screen(t_long *s_long)
