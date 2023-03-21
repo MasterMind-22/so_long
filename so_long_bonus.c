@@ -6,7 +6,7 @@
 /*   By: yonadry <yonadry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 14:08:27 by yonadry           #+#    #+#             */
-/*   Updated: 2023/03/20 17:20:14 by yonadry          ###   ########.fr       */
+/*   Updated: 2023/03/21 18:38:22 by yonadry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,6 @@ int	main(int ac, char **av)
 	s_long = malloc(sizeof(t_long));
 	if (ac == 2)
 	{
-		if (ft_strcmp(".ber", av[1] + (ft_strlen(av[1]) - 4)) != 0)
-		{
-			ft_putstr("Error\nInavlid Extension");
-			exit(0);
-		}
 		s_long->print_move = 1;
 		read_map(s_long, av[1]);
 		frame_protect1(s_long, av[1]);
@@ -56,10 +51,9 @@ int	main(int ac, char **av)
 		s_long->win = mlx_new_window(s_long->mlx, 60 * (s_long->map_width), 60
 				* (s_long->map_height), "so_long");
 		xpm_to_img(s_long);
-		print_on_screen(s_long);
 		mlx_hook(s_long->win, 2, 1L << 0, get_keycode, s_long);
 		mlx_hook(s_long->win, 17, 1L << 0, close_mark, s_long);
-		mlx_loop_hook(s_long->mlx, player_animation, s_long);
+		mlx_loop_hook(s_long->mlx, animation, s_long);
 		mlx_loop(s_long->mlx);
 		free_fun(s_long);
 	}

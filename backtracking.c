@@ -6,7 +6,7 @@
 /*   By: yonadry <yonadry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 14:23:13 by yonadry           #+#    #+#             */
-/*   Updated: 2023/03/19 14:35:21 by yonadry          ###   ########.fr       */
+/*   Updated: 2023/03/21 21:36:09 by yonadry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,11 @@ int	backtrack(t_long *s_long, char c, int i, int j)
 {
 	static int	x;
 
-	x = 0;
 	if (s_long->backtracking_map[i][j] == c)
 	{
 		s_long->a[x] = j;
 		s_long->b[x] = i;
 		x++;
-		return (1);
 	}
 	if (s_long->backtracking_map[i][j] == '1')
 		return (0);

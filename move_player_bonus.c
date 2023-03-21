@@ -6,7 +6,7 @@
 /*   By: yonadry <yonadry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 14:11:20 by yonadry           #+#    #+#             */
-/*   Updated: 2023/03/20 16:52:55 by yonadry          ###   ########.fr       */
+/*   Updated: 2023/03/21 19:00:58 by yonadry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,15 @@ int	close_mark(int keycode, t_long s_long)
 	(void)s_long;
 	exit(0);
 }
+int esc(int keycode)
+{
+	if (keycode == 53)
+		exit(0);
+	return(0);
+}
 
 int	get_keycode(int keycode, t_long *s_long)
 {
-	if (keycode == 65307)
-		exit(0);
 	if ((keycode == 2 || keycode == 124)
 		&& s_long->map[s_long->y_player][s_long->x_player + 1] != '1')
 	{
@@ -55,7 +59,10 @@ int	get_keycode(int keycode, t_long *s_long)
 	}
 	if ((keycode == 1 || keycode == 125)
 		&& s_long->map[s_long->y_player + 1][s_long->x_player] != '1')
+	{
+		s_long->player_left_right = 2;
 		move_handler(s_long, 0, 1);
+	}
 	if ((keycode == 0 || keycode == 123)
 		&& s_long->map[s_long->y_player][s_long->x_player - 1] != '1')
 	{
@@ -64,6 +71,9 @@ int	get_keycode(int keycode, t_long *s_long)
 	}
 	if ((keycode == 13 || keycode == 126)
 		&& s_long->map[s_long->y_player - 1][s_long->x_player] != '1')
+	{	
+		s_long->player_left_right = 4;
 		move_handler(s_long, 0, -1);
-	return (0);
+	}
+	return (esc(keycode), 0);
 }

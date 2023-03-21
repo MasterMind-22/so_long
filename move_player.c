@@ -6,7 +6,7 @@
 /*   By: yonadry <yonadry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 13:52:19 by yonadry           #+#    #+#             */
-/*   Updated: 2023/03/20 17:05:16 by yonadry          ###   ########.fr       */
+/*   Updated: 2023/03/21 18:38:26 by yonadry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	close_mark(int keycode, t_long s_long)
 
 int	get_keycode(int keycode, t_long *s_long)
 {
-	if (keycode == 65307)
+	if (keycode == 53)
 		exit(0);
 	if ((keycode == 2 || keycode == 124)
 		&& s_long->map[s_long->y_player][s_long->x_player + 1] != '1')
