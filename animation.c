@@ -6,7 +6,7 @@
 /*   By: yonadry <yonadry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 12:11:34 by yonadry           #+#    #+#             */
-/*   Updated: 2023/03/22 19:06:30 by yonadry          ###   ########.fr       */
+/*   Updated: 2023/03/22 20:42:21 by yonadry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,7 +141,7 @@ int animation(t_long *s_long, int x, int y)
 	player_left_animation(s_long, x, y);
 	player_up_animation(s_long, x, y);
 	player_down_animation(s_long, x, y);
-	collect_animation(s_long, x, y);
+	//collect_animation(s_long, x, y);
 	print_on_screen(s_long);
 	char *move = ft_itoa(s_long->print_move);
 	mlx_string_put(s_long->mlx, s_long->win, 0, 0, 0xFFFFFF, move);
