@@ -6,7 +6,7 @@
 #    By: yonadry <yonadry@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/19 14:14:12 by yonadry           #+#    #+#              #
-#    Updated: 2023/03/20 12:16:57 by yonadry          ###   ########.fr        #
+#    Updated: 2023/03/22 20:36:44 by yonadry          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,7 @@ BONUS_SRCS =	\
 		./get_next_line/get_next_line.c \
 		./get_next_line/get_next_line_utils.c \
 		animation.c \
+		so_long_bonus.c \
 
 OBJS = $(SRCS:.c=.o) \
 		get_next_line.o \
@@ -74,7 +75,7 @@ $(NAME) : $(LIB)
 #	$(CC) so_long.c $(LIB) libmlx.a -Lmlx_linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz  -o $(NAME)
 
 $(BONUS_NAME) : $(LIB_BONUS)
-	 $(CC) so_long_bonus.c $(LIB_BONUS) -lmlx -framework OpenGL -framework AppKit -o $(BONUS_NAME)
+	 $(CC) $(LIB_BONUS) -lmlx -framework OpenGL -framework AppKit -o $(BONUS_NAME)
 #	$(CC) so_long_bonus.c $(LIB_BONUS) libmlx.a -Lmlx_linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(BONUS_NAME)
 
 clean :

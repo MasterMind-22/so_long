@@ -11,7 +11,6 @@ void enemy_pos_change(t_long *s_long)
 
 }
 
-
 void enmmy_move(t_long *s_long)
 {
 	

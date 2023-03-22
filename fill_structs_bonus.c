@@ -6,7 +6,7 @@
 /*   By: yonadry <yonadry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 14:17:39 by yonadry           #+#    #+#             */
-/*   Updated: 2023/03/21 20:54:37 by yonadry          ###   ########.fr       */
+/*   Updated: 2023/03/22 18:38:00 by yonadry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,19 +30,19 @@ void	xpm_to_img(t_long *s_long)
 	int	y;
 
 	s_long->player_right_img = mlx_xpm_file_to_image(s_long->mlx,
-			"./pics_bonus/Right (1).xpm", &x, &y);
+			"./pics_bonus/r1.xpm", &x, &y);
 	s_long->player_left_img = mlx_xpm_file_to_image(s_long->mlx,
-			"./pics_bonus/Left (1).xpm", &x, &y);
+			"./pics_bonus/l1.xpm", &x, &y);
 	s_long->player_up_img = mlx_xpm_file_to_image(s_long->mlx,
-			"./pics_bonus/Front (1).xpm", &x, &y);
+			"./pics_bonus/f1.xpm", &x, &y);
 	s_long->player_down_img = mlx_xpm_file_to_image(s_long->mlx,
-			"./pics_bonus/Left (1).xpm", &x, &y);
+			"./pics_bonus/d1.xpm", &x, &y);
 	s_long->wall_img = mlx_xpm_file_to_image(s_long->mlx, "./pics/wall.xpm", &x,
 			&y);
 	s_long->bg_img = mlx_xpm_file_to_image(s_long->mlx, "./pics/floor_4.xpm",
 			&x, &y);
 	s_long->collectible_img = mlx_xpm_file_to_image(s_long->mlx,
-			"./pics/collect.xpm", &x, &y);
+			"./pics_bonus/c1.xpm", &x, &y);
 	s_long->door_open_img = mlx_xpm_file_to_image(s_long->mlx,
 			"./pics/open.xpm", &x, &y);
 	s_long->door_closed_img = mlx_xpm_file_to_image(s_long->mlx,

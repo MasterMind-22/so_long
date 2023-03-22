@@ -6,11 +6,35 @@
 /*   By: yonadry <yonadry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 14:23:13 by yonadry           #+#    #+#             */
-/*   Updated: 2023/03/22 18:04:19 by yonadry          ###   ########.fr       */
+/*   Updated: 2023/03/22 20:33:47 by yonadry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	ft_bzero(void *s, size_t n)
+{
+	char	*a;
+	size_t	i;
+
+	i = 0;
+	a = (char *)s;
+	while (i < n)
+	{
+		a[i] = 0;
+		i++;
+	}
+}
+void	*ft_calloc(size_t count, size_t size)
+{
+	char	*mem;
+
+	mem = malloc(count * size);
+	if (!mem)
+		return (NULL);
+	ft_bzero(mem, count * size);
+	return (mem);
+}
 
 void	free_ptr(char **map, int len)
 {
@@ -75,16 +99,16 @@ void c_backtracking(t_long *s_long, char *av)
 	int i;
 
 	i = -1;
-	s_long->a = (int *)malloc(sizeof(int)*s_long->c_count);
-	s_long->b = (int *)malloc(sizeof(int)*s_long->c_count);
+	s_long->a = (int *)ft_calloc(sizeof(int),s_long->c_count);
+	s_long->b = (int *)ft_calloc(sizeof(int),s_long->c_count);
 	while (++i < s_long->c_count)
 	{
-		if (backtrack(s_long, 'C', s_long->y_player, s_long->x_player) != 1
-			&& i <= s_long->c_count)
+		if (backtrack(s_long, 'C', s_long->y_player, s_long->x_player) != 1)
 		{
 			ft_putstr("Error\nNo Valid Path to Collectibles");
 			exit(0);
 		}
+			printf("i == %d\tc == %d\n",i, s_long->c_count);
 		free_ptr(s_long->backtracking_map, s_long->map_height);
 		free(s_long->backtracking_map);
 		s_long->backtracking_map = read_map1(s_long, av);

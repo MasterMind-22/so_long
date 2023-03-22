@@ -6,7 +6,7 @@
 /*   By: yonadry <yonadry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 13:54:49 by yonadry           #+#    #+#             */
-/*   Updated: 2023/03/21 19:02:59 by yonadry          ###   ########.fr       */
+/*   Updated: 2023/03/22 20:22:55 by yonadry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ typedef struct so_long
 
 }	t_long;
 
+void		*ft_calloc(size_t count, size_t size);
 int			animation(t_long *s_long, int x, int y);
 void		ft_putnbr_fd(int n);
 int			map_height(char *av);
