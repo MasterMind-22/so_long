@@ -6,7 +6,7 @@
 /*   By: yonadry <yonadry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 14:23:13 by yonadry           #+#    #+#             */
-/*   Updated: 2023/03/21 21:36:09 by yonadry          ###   ########.fr       */
+/*   Updated: 2023/03/22 18:04:19 by yonadry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,37 +44,39 @@ void	fillx(t_long *s_long)
 	}
 }
 
-int	backtrack(t_long *s_long, char c, int i, int j)
+int backtrack(t_long *s_long,char c, int i, int j)
 {
-	static int	x;
-
+	static int x = 0;
 	if (s_long->backtracking_map[i][j] == c)
 	{
 		s_long->a[x] = j;
 		s_long->b[x] = i;
 		x++;
+		return 1;
 	}
-	if (s_long->backtracking_map[i][j] == '1')
-		return (0);
+	if (s_long->backtracking_map[i][j] == '1'
+		|| s_long->backtracking_map[i][j] == 'E'
+		|| i < 0 || j < 0 || i > s_long->map_height-1 || j > s_long->map_width-1)
+		return 0;
 	s_long->backtracking_map[i][j] = '1';
-	if (backtrack(s_long, c, i, j + 1) == 1)
-		return (1);
-	if (backtrack(s_long, c, i + 1, j) == 1)
-		return (1);
-	if (backtrack(s_long, c, i - 1, j) == 1)
-		return (1);
-	if (backtrack(s_long, c, i, j - 1) == 1)
-		return (1);
-	return (0);
+	if (backtrack(s_long, c, i, j+1) == 1)
+		return 1;
+	if (backtrack(s_long, c, i+1, j) == 1)
+		return 1;
+	if (backtrack(s_long, c, i-1, j) == 1)
+		return 1;
+	if (backtrack(s_long, c, i, j-1) == 1)
+		return 1;
+	return 0;
 }
 
-void	c_backtracking(t_long *s_long, char *av)
+void c_backtracking(t_long *s_long, char *av)
 {
-	int	i;
+	int i;
 
 	i = -1;
-	s_long->a = (int *)malloc(sizeof(int) * s_long->c_count);
-	s_long->b = (int *)malloc(sizeof(int) * s_long->c_count);
+	s_long->a = (int *)malloc(sizeof(int)*s_long->c_count);
+	s_long->b = (int *)malloc(sizeof(int)*s_long->c_count);
 	while (++i < s_long->c_count)
 	{
 		if (backtrack(s_long, 'C', s_long->y_player, s_long->x_player) != 1
@@ -88,7 +90,6 @@ void	c_backtracking(t_long *s_long, char *av)
 		s_long->backtracking_map = read_map1(s_long, av);
 		s_long->k = -1;
 		while (++s_long->k <= i)
-			s_long->backtracking_map[s_long->b[s_long->k]]
-			[s_long->a[s_long->k]] = '0';
+			s_long->backtracking_map[s_long->b[s_long->k]][s_long->a[s_long->k]] = '0';
 	}
 }
