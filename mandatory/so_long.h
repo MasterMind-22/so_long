@@ -6,7 +6,7 @@
 /*   By: yonadry <yonadry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 13:59:52 by yonadry           #+#    #+#             */
-/*   Updated: 2023/03/23 16:25:58 by yonadry          ###   ########.fr       */
+/*   Updated: 2023/03/23 21:23:03 by yonadry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,5 +76,6 @@ void		ft_putnbr(int n);
 void		ft_putchar(char c);
 void		free_ptr(char **map, int len);
 void		check_len(t_long *s_long);
+void		ft_error(void);
 
 #endif

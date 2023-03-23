@@ -6,7 +6,7 @@
 /*   By: yonadry <yonadry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 14:09:30 by yonadry           #+#    #+#             */
-/*   Updated: 2023/03/23 14:32:28 by yonadry          ###   ########.fr       */
+/*   Updated: 2023/03/23 21:23:42 by yonadry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,6 @@ void	ft_putnbr(int n)
 
 void	ft_error(void)
 {
-	ft_putstr("Error\n");
+	ft_putstr("\033[1;31mError\n\033[0m");
 	exit(1);
 }

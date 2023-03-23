@@ -6,7 +6,7 @@
 /*   By: yonadry <yonadry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 14:14:06 by yonadry           #+#    #+#             */
-/*   Updated: 2023/03/23 16:40:54 by yonadry          ###   ########.fr       */
+/*   Updated: 2023/03/23 21:23:33 by yonadry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,17 +104,11 @@ void	check_len(t_long *s_long)
 	i = s_long->map_height;
 	if (s_long->map_width != ft_strlen(s_long->map[i - 1])
 		|| s_long->map_height == s_long->map_width)
-	{
-		ft_putstr("Error\n");
-		exit(0);
-	}
+		ft_error();
 	while (i - 2 >= 0)
 	{
 		if (s_long->map_width != ft_strlen(s_long->map[i - 2]) - 1)
-		{
-			ft_putstr("Error\n");
-			exit(0);
-		}
+			ft_error();
 		i--;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: yonadry <yonadry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 14:11:20 by yonadry           #+#    #+#             */
-/*   Updated: 2023/03/23 16:08:10 by yonadry          ###   ########.fr       */
+/*   Updated: 2023/03/23 21:18:34 by yonadry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,13 @@ void	move_handler(t_long *s_long, int x, int y)
 		s_long->print_move++;
 	}
 	if (s_long->map[s_long->y_player][s_long->x_player] == 'N')
+	{
+		ft_putstr("\n\n\t\t\t\033[1;31mGame Over!\033[0m\n\n\n");
 		exit(0);
+	}
 	if (s_long->map[s_long->y_player][s_long->x_player] == 'E'
 		&& s_long->c_count == 0)
-		exit(0);
+		return (ft_putstr("\n\n\t\t\t\033[1;32mYou Won!\033[0m\n\n\n"), exit(0));
 	else if (s_long->map[s_long->y_player][s_long->x_player] == 'E'
 			&& s_long->c_count != 0)
 	{

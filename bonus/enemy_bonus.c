@@ -6,7 +6,7 @@
 /*   By: yonadry <yonadry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 04:05:34 by yonadry           #+#    #+#             */
-/*   Updated: 2023/03/23 16:58:48 by yonadry          ###   ########.fr       */
+/*   Updated: 2023/03/23 21:19:34 by yonadry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ void	check_n_mv(t_long *s_long, int i, int j)
 			j += x;
 		}
 		else if (s_long->map[i + y][j + x] == 'P')
-			exit(0);
-		else if (s_long->map[i + y][j + x] == '1')
+			return (ft_putstr("\n\n\t\t\t\033[1;31mGame Over!\033[0m\n\n\n"), exit(0));
+		else
 			return ;
 	}
 }
